@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React  from 'react';
 import './App.css';
+import styled, { ThemeProvider } from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = {
+    primary:'red',
+    secondary:'green',
+    font:'fantasy'
 }
 
-export default App;
+const Button = styled.button`
+font-size: 1.3rem;
+border: none;
+font-family: ${(props)=>props.theme.font};
+border-radius: 5px;
+background: ${props=>props.theme.primary};
+color: white;
+padding: 7px 10px;
+&:hover{
+    background:blue;
+    transition:0.5s ease-in;
+    transform:rotate(-360deg);
+   
+}
+`;
+const H1 = styled.h1`
+font-size: 3rem;
+font-family: ${(props)=>props.theme.font};
+
+`
+
+export default function App(){
+    
+    return(
+        <ThemeProvider theme={theme}>
+        <div>
+         <H1>Styled components</H1>
+         <form>
+             <Button primary>Craeted New</Button>
+         </form>
+        </div>
+        </ThemeProvider>
+    )
+}
+
+
+
